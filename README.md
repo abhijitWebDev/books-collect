@@ -1,4 +1,4 @@
-# My Node.js App
+# My Books collection application
 
 This is a simple Node.js application that uses Express and MongoDB to manage books through a RESTful API.
 
