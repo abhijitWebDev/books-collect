@@ -74,3 +74,11 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
+
+- Deployed on digital ocean
+- I have deployed on digital ocean and the link is 
+- [a link](https://whale-app-ff5yn.ondigitalocean.app/api/books)
+- I have connected it to github repo and deployed the main branch and when I change something in main branch and push it, it will redeploy again
+- for deployment it is working only for get request.
+
+- The hurdles I faced is updation by id , in that I have to fix the update the controller and handle the null case.
