@@ -1,5 +1,5 @@
 {
-  "name": "my-nodejs-app",
+  "name": "Books-collection",
   "version": "1.0.0",
   "description": "A Node.js project with Express and MongoDB for managing books APIs",
   "main": "src/app.js",

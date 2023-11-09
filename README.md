@@ -77,7 +77,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 - Deployed on digital ocean
 - I have deployed on digital ocean and the link is 
-- [a link](https://whale-app-ff5yn.ondigitalocean.app/api/books)
+- Deployed link is [here](https://whale-app-ff5yn.ondigitalocean.app/api/books).
 - I have connected it to github repo and deployed the main branch and when I change something in main branch and push it, it will redeploy again
 - for deployment it is working only for get request.
 
