@@ -81,3 +81,5 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 - for deployment it is working only for get request.
 
 - The hurdles I faced is updation by id , in that I have to fix the update the controller and handle the null case.
+
+- I learned from my mistakes and optimized the code and fixed it for the id parameter.
