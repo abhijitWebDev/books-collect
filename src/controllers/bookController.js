@@ -1,78 +1,68 @@
 const Book = require('../models/bookModel');
 
 class BookController {
-  // for fetching all the books
   async getBooks(req, res) {
     try {
       const books = await Book.find();
       res.json(books);
     } catch (err) {
-      res.status(500).json({ message: err.message });
+      res.status(500).json({ message: 'Failed to fetch books' });
     }
   }
 
-  // fetching a single book
-
   async getBook(req, res) {
+    const { id } = req.params;
     try {
-      const book = await Book.findById(req.params.id);
-      if (book == null) {
+      const book = await Book.findById(id);
+      if (!book) {
         return res.status(404).json({ message: 'Cannot find book' });
       }
       res.json(book);
     } catch (err) {
-      return res.status(500).json({ message: "Not valid parameter" });
+      return res.status(500).json({ message: 'Failed to fetch book' });
     }
   }
 
-  // for creating book 
-
   async createBook(req, res) {
-    const book = new Book({
-      title: req.body.title,
-      author: req.body.author,
-      summary: req.body.summary,
-    });
+    const { title, author, summary } = req.body;
+    const book = new Book({ title, author, summary });
     try {
       const newBook = await book.save();
       res.status(201).json(newBook);
     } catch (err) {
-      res.status(400).json({ message: "No books are present" });
+      res.status(400).json({ message: 'Failed to create book' });
     }
   }
-// for updation of the the book
+
   async updateBook(req, res) {
+    const { id } = req.params;
+    const { title, author, summary } = req.body;
     try {
-      const book = await Book.findById(req.params.id);
-      if (book == null) {
+      const book = await Book.findById(id);
+      if (!book) {
         return res.status(404).json({ message: 'Cannot find book' });
       }
-      if (req.body.title != null) {
-        book.title = req.body.title;
-      }
-      if (req.body.author != null) {
-        book.author = req.body.author;
-      }
-      if (req.body.summary != null) {
-        book.summary = req.body.summary;
-      }
+      if (title) book.title = title;
+      if (author) book.author = author;
+      if (summary) book.summary = summary;
       const updatedBook = await book.save();
       res.json(updatedBook);
     } catch (err) {
-      return res.status(500).json({ message: "Cannot update book due to invalid id or id doesnot exist" });
+      return res.status(500).json({ message: 'Failed to update book' });
     }
   }
-// for deletion of the book
+
   async deleteBook(req, res) {
+    const { id } = req.params;
     try {
-      const book = await Book.findById(req.params.id);
-      if (book == null) {
+      const book = await Book.findById(id);
+      if (!book) {
         return res.status(404).json({ message: 'Cannot find book' });
       }
       await book.remove();
       res.json({ message: 'Deleted Book' });
     } catch (err) {
-      return res.status(500).json({ message: "not valid parameter or id" });
+      return res.status(500).json({ message: 'Failed to delete book' });
     }
   }
 }
